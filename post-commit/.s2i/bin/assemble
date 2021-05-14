@@ -10,7 +10,6 @@ rm -fR /tmp/src/.git
 mv /tmp/src/* ./
 
 
-sudo yum install mailx
 
 # Fix source directory permissions
 fix-permissions ./
