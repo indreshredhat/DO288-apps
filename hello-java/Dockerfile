@@ -7,8 +7,7 @@ ENV	  JAVA_OPTIONS -Xmx512m
 
 
 # Install the Java runtime, create a user for running the app, and set permissions
-RUN   yum install -y --disableplugin=subscription-manager java-1.8.0-openjdk-headless && \
-      yum install -y mailx && \  
+RUN   yum install -y --disableplugin=subscription-manager java-1.8.0-openjdk-headless && \    
       yum clean all --disableplugin=subscription-manager -y && \  
       mkdir -p /opt/app-root/bin
 
@@ -16,6 +15,7 @@ RUN   yum install -y --disableplugin=subscription-manager java-1.8.0-openjdk-hea
 ADD   https://github.com/RedHatTraining/DO288-apps/releases/download/OCP-4.1-1/hello-java.jar /opt/app-root/bin/
 
 COPY  run-app.sh /opt/app-root/bin/
+COPY  SendEmail.jar /opt/app-root/bin/
 
 RUN   chgrp -R 0 /opt/app-root && \
       chmod -R g=u /opt/app-root
